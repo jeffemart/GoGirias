@@ -25,5 +25,8 @@ WORKDIR /root/
 # Copiar o binário da aplicação da imagem builder
 COPY --from=builder /app/gogirias .
 
+# Definir a variável de ambiente para o token do Telegram
+ENV TELEGRAM_TOKEN=<seu_token_aqui>
+
 # Comando para executar a aplicação
 CMD ["./gogirias"] 

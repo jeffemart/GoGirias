@@ -1,16 +1,24 @@
 package main
 
 import (
-	"github.com/jeffemart/GoGirias/game"
 	"log"
+	"os"
 	"time"
+
+	"github.com/jeffemart/GoGirias/game"
 
 	"gopkg.in/telebot.v3"
 )
 
 func main() {
+	// Ler o token do Telegram a partir da variável de ambiente
+	token := os.Getenv("TELEGRAM_TOKEN")
+	if token == "" {
+		log.Fatal("TELEGRAM_TOKEN não está definido.")
+	}
+
 	pref := telebot.Settings{
-		Token:  "7541580179:AAEcUX09oPNz1AgbhmJD4ChP_bx45jal-MQ",
+		Token:  token,
 		Poller: &telebot.LongPoller{Timeout: 10 * time.Second},
 	}
 
